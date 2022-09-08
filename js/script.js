@@ -54,3 +54,14 @@ designThemeSelect.addEventListener("change", (e) => {
     }
 });
 
+
+//Payment
+const paymentMethod = document.getElementById('payment');
+const creditCardDiv = document.getElementById('credit-card');
+const paypalDiv = document.getElementById('paypal');
+const bitcoinDiv = document.getElementById('bitcoin');
+//Set payment method to credit card by default
+paymentMethod.value = 'credit-card';
+//Hide the sections for other payment methods
+paypalDiv.hidden = true;
+bitcoinDiv.hidden = true;
