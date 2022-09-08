@@ -17,8 +17,40 @@ jobRoleOption.addEventListener("change", () => {
 });
 
 
-//Disable the color select element
+//Disable and hide the color select element
 const colorSelect = document.getElementById('color');
 for (var options of colorSelect) {
+    options.hidden = true;
     options.disabled = true;
 }
+
+
+//Program the "Design" <select> element to listen for user changes.
+const designThemeSelect = document.getElementById('shirt-designs');
+designThemeSelect.addEventListener("change", (e) => {
+    for (var options of colorSelect) {
+        options.disabled = false;
+    }
+    if (e.target.value === 'js puns') {
+        for (let options of colorSelect) {
+            colorSelect[1].hidden  = false; 
+            colorSelect[2].hidden = false; 
+            colorSelect[3].hidden = false; 
+
+            colorSelect[4].hidden  = true; 
+            colorSelect[5].hidden = true; 
+            colorSelect[6].hidden = true; 
+        }
+    } else if (e.target.value === 'heart js') {
+        for (let options of colorSelect) {
+            colorSelect[1].hidden  = true; 
+            colorSelect[2].hidden = true; 
+            colorSelect[3].hidden = true;
+
+            colorSelect[4].hidden  = false; 
+            colorSelect[5].hidden = false; 
+            colorSelect[6].hidden = false;  
+        }
+    }
+});
+
