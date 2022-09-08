@@ -28,7 +28,7 @@ for (var options of colorSelect) {
 //Program the "Design" <select> element to listen for user changes.
 const designThemeSelect = document.getElementById('shirt-designs');
 designThemeSelect.addEventListener("change", (e) => {
-    for (var options of colorSelect) {
+    for (let options of colorSelect) {
         options.disabled = false;
     }
     if (e.target.value === 'js puns') {
