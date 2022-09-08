@@ -55,13 +55,32 @@ designThemeSelect.addEventListener("change", (e) => {
 });
 
 
-//Payment
-const paymentMethod = document.getElementById('payment');
+//Payment Info Section
+const paymentMethodSelect = document.getElementById('payment');
+
 const creditCardDiv = document.getElementById('credit-card');
 const paypalDiv = document.getElementById('paypal');
 const bitcoinDiv = document.getElementById('bitcoin');
+
 //Set payment method to credit card by default
-paymentMethod.value = 'credit-card';
+paymentMethodSelect.value = 'credit-card';
+
 //Hide the sections for other payment methods
 paypalDiv.hidden = true;
 bitcoinDiv.hidden = true;
+
+paymentMethodSelect.addEventListener('change', (e) => {
+    if(e.target.value === 'credit-card') {
+        creditCardDiv.hidden = false;
+        paypalDiv.hidden = true;
+        bitcoinDiv.hidden = true;
+    } else if(e.target.value ==='paypal') {
+        creditCardDiv.hidden = true;
+        paypalDiv.hidden = false;
+        bitcoinDiv.hidden = true;
+    } else if(e.target.value ==='bitcoin') {
+        creditCardDiv.hidden = true;
+        paypalDiv.hidden = true;
+        bitcoinDiv.hidden = false;
+    }
+});
