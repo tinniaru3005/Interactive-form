@@ -15,3 +15,10 @@ jobRoleOption.addEventListener("change", () => {
         otherJobRoleInput.type = 'hidden';
     }
 });
+
+
+//Disable the color select element
+const colorSelect = document.getElementById('color');
+for (var options of colorSelect) {
+    options.disabled = true;
+}
