@@ -84,3 +84,22 @@ paymentMethodSelect.addEventListener('change', (e) => {
         bitcoinDiv.hidden = false;
     }
 });
+
+
+
+//Register for activities section. 
+//The "Total: $" element below the "Register for Activities" section should update
+const activities = document.getElementById('activities');
+const activitiesCost = document.getElementById('activities-cost');
+let activityTotalSum = 0;
+
+activities.addEventListener("change", (e) => {
+    const activitySelected = e.target; 
+    const dataCost = parseInt(activitySelected.getAttribute('data-cost'));
+    if(activitySelected.checked) {
+        activityTotalSum += dataCost;  
+    } else {
+        activityTotalSum -= dataCost;
+    }
+    activitiesCost.innerHTML = `Total:$${activityTotalSum}`;
+});
