@@ -103,3 +103,123 @@ activities.addEventListener("change", (e) => {
     }
     activitiesCost.innerHTML = `Total:$${activityTotalSum}`;
 });
+
+
+
+//Form validation 
+const form = document.querySelector('form');
+const valid = true; 
+const invalid = false;
+
+//Validation helper functions for pass or fail
+function validationPass(element) {
+    element.parentElement.classList.add('valid');
+    element.parentElement.lastElementChild.style.display = 'none';
+    element.parentElement.classList.remove('not-valid');
+}
+function validationFail(element) {
+    element.parentElement.classList.add('not-valid');;
+    element.parentElement.lastElementChild.style.display = 'block';   
+}
+
+//Helper function for name input validation 
+function nameValidator() {
+    const nameIsValid = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameInput.value);
+    if(nameIsValid) {
+        validationPass(nameInput);
+        return valid;
+    } else {
+        validationFail(nameInput);
+        return invalid;
+    }
+}
+
+const emailInput = document.getElementById('email');
+//Helper function for email address input validation
+function emailValidator() {
+    const emailIsValid = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailInput.value);
+    if(emailIsValid) {
+        validationPass(emailInput);
+        return valid;
+    } else {
+        validationFail(emailInput);
+        return invalid;
+    }
+}
+
+const activitiesSection = document.getElementById('activities-box')
+//Helper function for activites selection   
+function activitiesValidator() {
+    const activitiesSelected = document.querySelectorAll('[type="checkbox"]:checked');
+    if(activitiesSelected.length) {
+        validationPass(activitiesSection);
+        return valid;  
+    }  else  {
+        validationFail(activitiesSection);
+        return invalid;
+    }
+ }
+
+//Helper function for credit card payment method 
+const creditCardInput = document.getElementById('cc-num');
+function creditCardValidator() {
+    const creditCardIsValid = /^[0-9]{13}(?:[0-9]{3})?$/.test(creditCardInput.value);
+    if (creditCardIsValid) {
+        validationPass(creditCardInput);
+        return valid; 
+    } else {
+        validationFail(creditCardInput);
+        return invalid; 
+    }
+}
+
+//Helper function for zip code
+const zipCodeInput = document.getElementById('zip');
+function zipCodeValidator() {
+    const zipIsValid = /^[0-9]{5}$/.test(zipCodeInput.value);
+    if(zipIsValid) {
+        validationPass(zipCodeInput);
+        return valid; 
+    } else {
+        validationFail(zipCodeInput);
+        return invalid; 
+    }
+}
+
+//Helper function for CVV
+const cvvInput = document.getElementById('cvv');
+function cvvValidator() { 
+    const cvvIsValid = /^[0-9]{3}$/.test(cvvInput.value);
+    if(cvvIsValid) {
+        validationPass(cvvInput);
+        return valid; 
+    } else {
+        validationFail(cvvInput);
+        return invalid; 
+    }
+}
+
+//Event listener for form validation 
+form.addEventListener("submit", (e) => {
+    if(!nameValidator()) {
+        e.preventDefault()
+    }  
+    if (!emailValidator()) {
+        e.preventDefault()
+    }  
+    if (!activitiesValidator()) {
+        e.preventDefault()
+    }
+    if(paymentMethod.value === 'credit-card') {
+       if(!creditCardValidator()){
+        e.preventDefault()
+       } 
+      if(!zipCodeValidator()) {
+        e.preventDefault()
+      }
+       if (!cvvValidator()) {
+        e.preventDefault()
+       }
+    }
+}); 
+
