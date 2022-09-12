@@ -160,8 +160,8 @@ function activitiesValidator() {
     }
  }
 
-//Helper function for credit card payment method 
 const creditCardInput = document.getElementById('cc-num');
+//Helper function for credit card payment method 
 function creditCardValidator() {
     const creditCardIsValid = /^[0-9]{13}(?:[0-9]{3})?$/.test(creditCardInput.value);
     if (creditCardIsValid) {
@@ -173,8 +173,8 @@ function creditCardValidator() {
     }
 }
 
-//Helper function for zip code
 const zipCodeInput = document.getElementById('zip');
+//Helper function for zip code
 function zipCodeValidator() {
     const zipIsValid = /^[0-9]{5}$/.test(zipCodeInput.value);
     if(zipIsValid) {
@@ -186,8 +186,8 @@ function zipCodeValidator() {
     }
 }
 
-//Helper function for CVV
 const cvvInput = document.getElementById('cvv');
+//Helper function for CVV
 function cvvValidator() { 
     const cvvIsValid = /^[0-9]{3}$/.test(cvvInput.value);
     if(cvvIsValid) {
