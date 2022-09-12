@@ -236,3 +236,6 @@ for(let i = 0; i < checkboxes.length; i++) {
         parentElement.classList.remove('focus');
     })
 }
+
+
+
