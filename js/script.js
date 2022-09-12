@@ -111,7 +111,7 @@ const form = document.querySelector('form');
 const valid = true; 
 const invalid = false;
 
-//Validation helper functions for pass or fail
+//Accessibility : Validation helper functions for pass or fail
 function validationPass(element) {
     element.parentElement.classList.add('valid');
     element.parentElement.lastElementChild.style.display = 'none';
@@ -223,3 +223,16 @@ form.addEventListener("submit", (e) => {
     }
 }); 
 
+
+//Accessibility 
+const checkboxes = document.querySelectorAll('[type="checkbox"]');
+//Loop over checkbox inputs listening for 'focus' and 'blur' events on targeted input. 
+for(let i = 0; i < checkboxes.length; i++) {
+    const parentElement = checkboxes[i].parentElement;
+    checkboxes[i].addEventListener('focus', (e) => {
+        parentElement.classList.add('focus');
+    }) 
+    checkboxes[i].addEventListener('blur', (e) => {
+        parentElement.classList.remove('focus');
+    })
+}
